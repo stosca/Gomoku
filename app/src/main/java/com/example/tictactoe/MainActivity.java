@@ -155,4 +155,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         player_1.setText("Player 1: " + playerscores_1);
         player_2.setText("Player 2: " + playerscores_2);
     }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putInt("rounds", rounds);
+        outState.putInt("playerscores_1", playerscores_1);
+        outState.putInt("playerscores_2", playerscores_2);
+        outState.putBoolean("playerstatus_1", playerstatus_1);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        rounds = savedInstanceState.getInt("rounds");
+        playerscores_1 = savedInstanceState.getInt("playerscores_1");
+        playerscores_2 = savedInstanceState.getInt("playerscores_2");
+        playerstatus_1 = savedInstanceState.getBoolean("playerstatus_1");
+    }
 }

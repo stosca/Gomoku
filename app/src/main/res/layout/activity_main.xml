@@ -17,7 +17,9 @@
             android:layout_height="wrap_content"
             android:text="Player 1: 0"
             android:textColor="@color/colorAccent"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            android:freezesText="true"/>
+
 
         <TextView
             android:id="@+id/textview_player2"
@@ -26,7 +28,8 @@
             android:textColor="@color/colorPrimary"
             android:layout_below="@+id/textview_player1"
             android:text="Player 2: 0"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            android:freezesText="true"/>
 
         <Button
             android:id="@+id/button_new_game"
@@ -66,21 +69,24 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textSize="60sp" />
+            android:textSize="60sp"
+            android:freezesText="true"/>
 
         <Button
             android:id="@+id/button_01"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textSize="60sp" />
+            android:textSize="60sp"
+            android:freezesText="true"/>
 
         <Button
             android:id="@+id/button_02"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textSize="60sp" />
+            android:textSize="60sp"
+            android:freezesText="true"/>
 
     </LinearLayout>
 
@@ -94,21 +100,24 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textSize="60sp" />
+            android:textSize="60sp"
+            android:freezesText="true"/>
 
         <Button
             android:id="@+id/button_11"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textSize="60sp" />
+            android:textSize="60sp"
+            android:freezesText="true"/>
 
         <Button
             android:id="@+id/button_12"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textSize="60sp" />
+            android:textSize="60sp"
+            android:freezesText="true"/>
 
     </LinearLayout>
 
@@ -122,21 +131,24 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textSize="60sp" />
+            android:textSize="60sp"
+            android:freezesText="true"/>
 
         <Button
             android:id="@+id/button_21"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textSize="60sp" />
+            android:textSize="60sp"
+            android:freezesText="true"/>
 
         <Button
             android:id="@+id/button_22"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textSize="60sp" />
+            android:textSize="60sp"
+            android:freezesText="true"/>
 
     </LinearLayout>
 
