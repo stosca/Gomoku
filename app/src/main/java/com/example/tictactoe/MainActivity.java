@@ -8,7 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-    private Button[][] buttons = new Button[3][3];
+    private Button[][] buttons = new Button[5][5];
 
     private boolean playerstatus_1 = true;
 
@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         player_1 = findViewById(R.id.textview_player1);
         player_2 = findViewById(R.id.textview_player2);
 
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
                 String buttonId = "button_" + i + j;
                 int resId = getResources().getIdentifier(buttonId, "id", getPackageName());
                 buttons[i][j] = findViewById(resId);
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             ((Button) v).setText("O");
         }
         rounds++;
-        if (rounds == 9) {
+        if (rounds == 25) {
             tie();
         } else if (winning()) {
             if (playerstatus_1) {
@@ -90,16 +90,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         playerscores_1++;
         Toast.makeText(this,"Player 1 wins!", Toast.LENGTH_SHORT).show();
         updatePoints();
+        resetBoard();
     }
     private void player2Wins() {
         playerscores_2++;
         Toast.makeText(this,"Player 1 wins!", Toast.LENGTH_SHORT).show();
         updatePoints();
+        resetBoard();
     }
 
     private void resetBoard() {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
                 buttons[i][j].setText("");
             }
         }
@@ -114,39 +116,47 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         resetBoard();
     }
     private boolean winning() {
-        String[][] grids = new String[3][3];
+        String[][] grids = new String[5][5];
 
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
                 grids[i][j] = buttons[i][j].getText().toString();
             }
         }
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 5; i++) {
             if (!grids[i][0].equals("")
                     && grids[i][0].equals(grids[i][1])
-                    && grids[i][0].equals(grids[i][2])) {
+                    && grids[i][0].equals(grids[i][2])
+                    && grids[i][0].equals(grids[i][3])
+                    && grids[i][0].equals(grids[i][4])) {
                 return true;
             }
         }
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 5; i++) {
             if (!grids[0][i].equals("")
                     && grids[0][i].equals(grids[1][i])
-                    && grids[0][i].equals(grids[2][i])) {
+                    && grids[0][i].equals(grids[2][i])
+                    && grids[0][i].equals(grids[3][i])
+                    && grids[0][i].equals(grids[4][i])) {
                 return true;
             }
         }
 
         if (!grids[0][0].equals("") &&
                 grids[0][0].equals(grids[1][1])
-                && grids[0][0].equals(grids[2][2])) {
+                && grids[0][0].equals(grids[2][2])
+                && grids[0][0].equals(grids[3][3])
+                && grids[0][0].equals(grids[4][4])) {
             return true;
         }
 
-        if (!grids[0][2].equals("") &&
-                grids[0][2].equals(grids[1][1])
-                && grids[0][2].equals(grids[2][0])) {
+        if (!grids[0][4].equals("") &&
+                grids[0][4].equals(grids[1][3])
+                && grids[0][4].equals(grids[2][2])
+                && grids[0][4].equals(grids[3][1])
+                && grids[0][4].equals(grids[4][0])) {
             return true;
         }
         return false;
