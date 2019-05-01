@@ -1,5 +1,6 @@
 package com.example.tictactoe;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,13 +23,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private int playerscores_2;
 
+    public static String EXTRA_MESSAGE = "null";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        player_1 = findViewById(R.id.textview_player1);
-        player_2 = findViewById(R.id.textview_player2);
+        Intent intent = getIntent();
+        String firstName = intent.getStringExtra(SetupGame.EXTRA_MESSAGE);
+
+        player_1 = findViewById(R.id.nameOne);
+        player_2 = findViewById(R.id.nameTwo);
 
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
