@@ -25,6 +25,9 @@ public class SetupGame extends AppCompatActivity implements View.OnClickListener
 
     private int playerscores_2;
 
+    private String firstName;
+    private String secondName;
+
 
     public static String EXTRA_MESSAGE = "null";
 
@@ -34,8 +37,8 @@ public class SetupGame extends AppCompatActivity implements View.OnClickListener
         setContentView(R.layout.activity_setup_game);
 
         Intent intent = getIntent();
-        String firstName = intent.getStringExtra(MainActivity.FIRST_NAME);
-        String secondName = intent.getStringExtra(MainActivity.SECOND_NAME);
+        firstName = intent.getStringExtra(MainActivity.FIRST_NAME);
+        secondName = intent.getStringExtra(MainActivity.SECOND_NAME);
 
         player_1 = findViewById(R.id.textview_player1);
         player_1.setText(firstName);
@@ -56,7 +59,8 @@ public class SetupGame extends AppCompatActivity implements View.OnClickListener
         newgameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                resetGame();
+                setContentView(R.layout.activity_main);
+                finish();
             }
         });
 
@@ -102,13 +106,13 @@ public class SetupGame extends AppCompatActivity implements View.OnClickListener
 
     private void player1Wins() {
         playerscores_1++;
-        Toast.makeText(this, "Player 1 wins!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, firstName + " wins!", Toast.LENGTH_SHORT).show();
         updatePoints();
         resetBoard();
     }
     private void player2Wins() {
         playerscores_2++;
-        Toast.makeText(this,"Player 2 wins!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,secondName + " wins!", Toast.LENGTH_SHORT).show();
         updatePoints();
         resetBoard();
     }
@@ -176,8 +180,8 @@ public class SetupGame extends AppCompatActivity implements View.OnClickListener
         return false;
     }
     private void updatePoints() {
-        player_1.setText("Player 1: " + playerscores_1);
-        player_2.setText("Player 2: " + playerscores_2);
+        player_1.setText(firstName+ ": " + playerscores_1);
+        player_2.setText(secondName + ": " + playerscores_2);
     }
 
     @Override
@@ -199,4 +203,5 @@ public class SetupGame extends AppCompatActivity implements View.OnClickListener
         playerscores_2 = savedInstanceState.getInt("playerscores_2");
         playerstatus_1 = savedInstanceState.getBoolean("playerstatus_1");
     }
+
 }
