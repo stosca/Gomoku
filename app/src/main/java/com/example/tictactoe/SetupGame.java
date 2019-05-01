@@ -1,11 +1,14 @@
 package com.example.tictactoe;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 public class SetupGame extends AppCompatActivity implements View.OnClickListener {
     private Button[][] buttons = new Button[5][5];
@@ -22,6 +25,7 @@ public class SetupGame extends AppCompatActivity implements View.OnClickListener
 
     private int playerscores_2;
 
+
     public static String EXTRA_MESSAGE = "null";
 
     @Override
@@ -29,11 +33,16 @@ public class SetupGame extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup_game);
 
-//        Intent intent = getIntent();
-//        String firstName = intent.getStringExtra(SetupGame.EXTRA_MESSAGE);
-//
+        Intent intent = getIntent();
+        String firstName = intent.getStringExtra(MainActivity.FIRST_NAME);
+        String secondName = intent.getStringExtra(MainActivity.SECOND_NAME);
+
         player_1 = findViewById(R.id.textview_player1);
+        player_1.setText(firstName);
         player_2 = findViewById(R.id.textview_player2);
+        player_2.setText(secondName);
+
+
 
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
@@ -93,13 +102,13 @@ public class SetupGame extends AppCompatActivity implements View.OnClickListener
 
     private void player1Wins() {
         playerscores_1++;
-        Toast.makeText(this,"Player 1 wins!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Player 1 wins!", Toast.LENGTH_SHORT).show();
         updatePoints();
         resetBoard();
     }
     private void player2Wins() {
         playerscores_2++;
-        Toast.makeText(this,"Player 1 wins!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"Player 2 wins!", Toast.LENGTH_SHORT).show();
         updatePoints();
         resetBoard();
     }

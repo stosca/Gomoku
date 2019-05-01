@@ -8,7 +8,8 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static String EXTRA_MESSAGE = "null";
+    public static String FIRST_NAME = "null";
+    public static String SECOND_NAME = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,12 +21,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void setNames(View view) {
         Intent intent = new Intent(this, SetupGame.class);
-        EditText firstName = findViewById(R.id.nameOne);
-        EditText secondName = findViewById(R.id.nameTwo);
+        EditText firstName = (EditText) findViewById(R.id.nameOne);
+        EditText secondName = (EditText) findViewById(R.id.nameTwo);
         String first_name = firstName.getText().toString();
         String second_name = secondName.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, first_name);
-        intent.putExtra(EXTRA_MESSAGE, second_name);
+        intent.putExtra(FIRST_NAME, first_name);
+        intent.putExtra(SECOND_NAME, second_name);
         startActivity(intent);
     }
 
